@@ -47,7 +47,7 @@ let moviesData = [
     genres: ["Action", "Crime", "Drama"],
     duration: 152,
     poster_url:
-      "https://contentserver.com.au/assets/598411_p173378_p_v8_au.jpg",
+      "https://resizing.flixster.com/WAHXGKleT3QvhqHUlFGIRgcQAjU=/206x305/v2/https://flxt.tmsimg.com/assets/p173378_p_v8_au.jpg",
     trailer_url: "https://www.youtube.com/watch?v=_PZpmTj1Q8Q",
     wiki_url: "https://en.wikipedia.org/wiki/The_Dark_Knight_(film)",
     release_date: "2008-07-18T00:00:00+05:30",

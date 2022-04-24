@@ -20,6 +20,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import artists from "../../common/artists";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import ReactDOM from "react-dom";
+import Details from "../details/Details";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
@@ -73,13 +75,20 @@ class Home extends Component {
   releaseDateSelectHandler = (event) => {
     this.setState({ release_date: event.target.value });
   };
+
+  movieClickHandler = (movieId) => {
+    ReactDOM.render(
+      <Details movieId={movieId} />,
+      document.getElementById("root")
+    );
+  };
+
   render() {
     const { classes } = this.props;
     var data = null;
 
     data = moviesData.filter((moviesData) => {
       function filterGenres(genres) {
-        console.log(genres);
         let bool = false;
         for (let x in genres) {
           for (let y in moviesData.genres) {
@@ -92,8 +101,6 @@ class Home extends Component {
       }
 
       function filterArtists(artists) {
-        // console.log("...." + artists[0]);
-        // console.log(",,,, " + moviesData.artists[0].first_name);
         let bool = false;
         for (let x in artists) {
           for (let y in moviesData.artists) {
@@ -118,8 +125,7 @@ class Home extends Component {
           moviesData.release_date.substr(5, 2),
           moviesData.release_date.substr(8, 2),
         ];
-        console.log("........." + dateSet);
-        console.log("//////////////" + moviedate);
+
         for (let x in dateSet) {
           if (dateSet[x] === moviedate[x]) {
             count++;
@@ -143,7 +149,7 @@ class Home extends Component {
     });
     return (
       <div>
-        {/* <Header /> */}
+        <Header />
         <div className={classes.upcomingMoviesHeading}>
           <span>Upcoming Movies</span>
         </div>
@@ -169,6 +175,7 @@ class Home extends Component {
             >
               {data.map((data) => (
                 <GridListTile
+                  onClick={() => this.movieClickHandler(data.id)}
                   className="released-movie-grid-item"
                   key={"grid" + data.id}
                 >
